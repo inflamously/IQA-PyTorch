@@ -1,0 +1,48 @@
+# pyproject.toml
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyiqa"
+description = "PyTorch Toolbox for Image Quality Assessment"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Chaofeng Chen", email = "chaofenghust@gmail.com" }
+]
+keywords = ["image quality assessment", "pytorch"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+urls.Homepage = "https://github.com/chaofengc/IQA-PyTorch"
+dynamic = ["version", "dependencies"]
+
+[project.scripts]
+pyiqa = "pyiqa.pyiqa_cmd:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "pyiqa.version.__version__"}
+dependencies = {file = "requirements.txt"}
+
+[tool.setuptools.packages.find]
+include = ["pyiqa*"]
+exclude = [
+    "options*",
+    "datasets*",
+    "experiments*",
+    "results*",
+    "tb_logger*",
+    "wandb*",
+    "tests*",
+    "ResultsCalibra*",
+    "scripts*",
+]
